@@ -66,7 +66,9 @@ Though we do recommend using ESM, you can also import this module using `import(
 CJS setups.
 
 ```js
-const larser = await import("larser").default;
+(async () => {
+  const larser = await import("larser").default;
+})();
 ```
 
 And then you can use it just as normal.
