@@ -39,6 +39,8 @@ export default (
         for (let i = 0; i < length; i++) {
           parsed[main[i]] = split[1];
         }
+      } else {
+        parsed[split[0]] = split[1];
       }
     } else if (cIndex.startsWith("-")) {
       const split = cIndex.trim().slice(1).split("");
