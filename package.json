@@ -1,7 +1,7 @@
 {
   "name": "larser",
   "version": "1.0.0",
-  "description": "Lightweight parser",
+  "description": "Lightweight command line argument parser",
   "main": "index.js",
   "types": "src/types/index.d.ts",
   "type": "module",
@@ -18,6 +18,10 @@
     "minor": "npm version minor && npm run pub && git push --follow-tags",
     "major": "npm version major && npm run pub && git push --follow-tags"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FLzyy/larser.git"
+  },
   "keywords": [
     "cli",
     "argv",
@@ -27,6 +31,10 @@
   ],
   "author": "FLzyy",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FLzyy/larser/issues"
+  },
+  "homepage": "https://github.com/FLzyy/larser",
   "devDependencies": {
     "@swc/cli": "^0.1.59",
     "@swc/core": "^1.3.24",
