@@ -60,6 +60,17 @@ console.log(parsed);
  */
 ```
 
+## CJS Usage
+
+Though we do recommend using ESM, you can also import this module using `import()` that is available in most
+CJS setups.
+
+```js
+const larser = await import("larser").default;
+```
+
+And then you can use it just as normal.
+
 ## Argument Types
 
 ### --X=Y
