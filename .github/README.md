@@ -19,7 +19,7 @@ const parsed = larser(argv);
 
 console.log(parsed);
 
-/**`
+/**
  * --testI=1233 --testII=3112
  *
  * Expected Output:
