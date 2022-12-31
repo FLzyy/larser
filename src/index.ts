@@ -1,6 +1,6 @@
 import { Options, Parsed } from "./types/index.js";
 
-export default (
+export const larser = (
   argv: string[],
   options: Options = {
     aliases: {},

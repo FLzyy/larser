@@ -1,5 +1,6 @@
 dist
 distdev
+*.d.ts
 # Logs
 logs
 *.log
