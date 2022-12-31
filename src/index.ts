@@ -9,9 +9,12 @@ interface Parsed {
 
 export const larser = (
   argv: string[],
-  options?: Options,
+  options: Options = {
+    aliases: {},
+    defaults: {},
+  },
 ): Parsed => {
-  const { aliases, defaults } = options ?? { aliases: {}, defaults: {} };
+  const { aliases, defaults } = options;
   let parsed: Parsed = {
     _: [],
     ...defaults,
