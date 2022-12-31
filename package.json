@@ -1,6 +1,6 @@
 {
   "name": "larser",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Lightweight command line argument parser",
   "main": "index.js",
   "types": "src/types/index.d.ts",
