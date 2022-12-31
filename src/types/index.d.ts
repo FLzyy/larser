@@ -1,10 +1,13 @@
-declare namespace larser {
-  interface Options {
-    aliases: Record<string, string[]>;
-  }
+export function larser(
+  argv: string[],
+  options?: Options,
+): Parsed;
 
-  interface Parsed {
-    _: string[];
-    [key: string]: unknown;
-  }
+export interface Options {
+  aliases: Record<string, string[]>;
+}
+
+export interface Parsed {
+  _: string[];
+  [key: string]: unknown;
 }

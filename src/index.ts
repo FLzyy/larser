@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/triple-slash-reference */
-/// <reference path="./types/index.d.ts" />
+import { Options, Parsed } from "./types/index.js";
 
 export default (
   argv: string[],
-  options: larser.Options = {
+  options: Options = {
     aliases: {},
   },
-): Record<string, unknown> => {
+): Parsed => {
   const { aliases } = options;
-  let parsed: larser.Parsed = {
+  let parsed: Parsed = {
     _: [],
   };
 
