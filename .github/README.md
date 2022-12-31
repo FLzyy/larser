@@ -11,7 +11,7 @@ A Lightweight, 0 dependency package for parsing command line arguments that's [o
 The following is a basic example of using larser:
 
 ```js
-import larser from "larser";
+import { larser } from "larser";
 
 const argv = process.argv;
 const parsed = larser(argv);
