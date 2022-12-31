@@ -32,7 +32,7 @@ console.log(parsed);
 Using aliases is also supported by larser:
 
 ```js
-import larser from "larser";
+import { larser } from "larser";
 
 const argv = process.argv;
 const parsed = larser(argv, {
@@ -66,7 +66,7 @@ console.log(parsed);
 You can also set defaults when the user does not provide a value:
 
 ```js
-import larser from "larser";
+import { larser } from "larser";
 
 const argv = process.argv;
 const parsed = larser(argv, {
@@ -98,7 +98,7 @@ CJS setups.
 
 ```js
 (async () => {
-  const larser = await import("larser").default;
+  const larser = await import("larser").larser;
 
   // do something;
 })();
@@ -106,7 +106,7 @@ CJS setups.
 // or
 
 import("larser").then((module) => {
-  const larser = module.default;
+  const larser = module.larser;
 
   // do something;
 });
