@@ -2,7 +2,6 @@
 
 [![npm version](https://img.shields.io/npm/v/larser)](https://www.npmjs.com/package/larser)
 [![npm downloads](https://img.shields.io/npm/dw/larser.svg)](https://www.npmjs.com/package/larser)
-[![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/larser)](https://www.npmjs.com/package/larser)
 [![CodeFactor](https://www.codefactor.io/repository/github/flzyy/larser/badge)](https://www.codefactor.io/repository/github/flzyy/larser)
 
 A Lightweight, 0 dependency package for parsing command line arguments that's [only a few **bytes**](https://bundlephobia.com/package/larser).
