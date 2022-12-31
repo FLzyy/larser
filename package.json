@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "Lightweight command line argument parser",
   "main": "index.js",
-  "types": "src/types/index.d.ts",
+  "types": "index.d.ts",
   "type": "module",
   "scripts": {
     "compile": "npx swc src/index.ts -d dist --config-file .swcrc",
