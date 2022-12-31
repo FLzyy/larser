@@ -1,13 +1,17 @@
-import { Options, Parsed } from "./types/index.js";
+interface Options {
+  aliases?: Record<string, string[]>;
+  defaults?: Record<string, boolean | string>;
+}
+interface Parsed {
+  _: string[];
+  [key: string]: unknown;
+}
 
 export const larser = (
   argv: string[],
-  options: Options = {
-    aliases: {},
-    defaults: {},
-  },
+  options?: Options,
 ): Parsed => {
-  const { aliases, defaults } = options;
+  const { aliases, defaults } = options ?? { aliases: {}, defaults: {} };
   let parsed: Parsed = {
     _: [],
     ...defaults,
