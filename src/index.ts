@@ -4,11 +4,14 @@ export default (
   argv: string[],
   options: Options = {
     aliases: {},
+    defaults: {},
   },
 ): Parsed => {
-  const { aliases } = options;
+  console.log(options);
+  const { aliases, defaults } = options;
   let parsed: Parsed = {
     _: [],
+    ...defaults,
   };
 
   const length = argv.length;
@@ -18,25 +21,27 @@ export default (
     if (cIndex.startsWith("--")) {
       const split = cIndex.trim().slice(2).split("=");
 
-      if (Object.keys(aliases).includes(split[0])) {
-        const main = aliases[split[0]];
-        const length = main.length;
-        for (let i = 0; i < length; i++) {
-          parsed[main[i]] = split[1];
-        }
-        parsed[split[0]] = split[1];
-      } else if (Object.values(aliases).flat().includes(split[0])) {
-        const mainstr = Object.keys(aliases).filter((k) =>
-          aliases[k].includes(split[0])
-        );
-        if (mainstr.length > 1) {
-          throw new Error("Duplicate Aliases");
-        }
-        const main = aliases[mainstr[0]];
-        parsed[mainstr[0]] = split[1];
-        const length = main.length;
-        for (let i = 0; i < length; i++) {
-          parsed[main[i]] = split[1];
+      if (aliases != null) {
+        if (Object.keys(aliases).includes(split[0])) {
+          const main = aliases[split[0]];
+          const length = main.length;
+          for (let i = 0; i < length; i++) {
+            parsed[main[i]] = split[1];
+          }
+          parsed[split[0]] = split[1];
+        } else if (Object.values(aliases).flat().includes(split[0])) {
+          const mainstr = Object.keys(aliases).filter((k) =>
+            aliases[k].includes(split[0])
+          );
+          if (mainstr.length > 1) {
+            throw new Error("Duplicate Aliases");
+          }
+          const main = aliases[mainstr[0]];
+          parsed[mainstr[0]] = split[1];
+          const length = main.length;
+          for (let i = 0; i < length; i++) {
+            parsed[main[i]] = split[1];
+          }
         }
       } else {
         parsed[split[0]] = split[1];

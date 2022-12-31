@@ -28,6 +28,8 @@ console.log(parsed);
  */
 ```
 
+## Aliases
+
 Using aliases is also supported by larser:
 
 ```js
@@ -60,6 +62,36 @@ console.log(parsed);
  */
 ```
 
+## Default
+
+You can also set defaults when the user does not provide a value:
+
+```js
+import larser from "larser";
+
+const argv = process.argv;
+const parsed = larser(argv, {
+  default: {
+    t: "default",
+    b: "default",
+  },
+});
+
+console.log(parsed);
+
+/**
+ * --b=notdefault
+ *
+ * Expected Output:
+ *
+ * {
+ *  _: [],
+ *  t: "default",
+ *  b: "notdefault"
+ * }
+ */
+```
+
 ## CJS Usage
 
 Though we do recommend using ESM, you can also import this module using `import()` that is available in most
@@ -68,7 +100,17 @@ CJS setups.
 ```js
 (async () => {
   const larser = await import("larser").default;
+
+  // do something;
 })();
+
+// or
+
+import("larser").then((module) => {
+  const larser = module.default;
+
+  // do something;
+});
 ```
 
 And then you can use it just as normal.

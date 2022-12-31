@@ -2,10 +2,11 @@ import larser from "./index.js";
 
 const argv = process.argv;
 const parsed = larser(argv, {
-  aliases: {
-    testI: ["t1", "te1"],
-    testII: ["t2", "te2"],
+  defaults: {
+    t: true,
+    b: "defaulted",
   },
 });
 
+console.log(argv);
 console.log(parsed);

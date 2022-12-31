@@ -1,13 +1,15 @@
-export function larser(
+export = larser;
+declare function larser(
   argv: string[],
-  options?: Options,
-): Parsed;
-
-export interface Options {
-  aliases: Record<string, string[]>;
-}
-
-export interface Parsed {
-  _: string[];
-  [key: string]: unknown;
+  options?: larser.Options,
+): larser.Parsed;
+declare namespace larser {
+  export interface Options {
+    aliases?: Record<string, string[]>;
+    defaults?: Record<string, boolean | string>;
+  }
+  export interface Parsed {
+    _: string[];
+    [key: string]: unknown;
+  }
 }
