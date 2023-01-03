@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 interface Options {
   aliases?: Record<string, string[]>;
   defaults?: Record<string, boolean | string>;
@@ -26,20 +27,20 @@ export const larser = (
     if (cIndex.startsWith("--")) {
       const split = cIndex.slice(2).split("=");
 
-      if (aliases != null) {
+      if (aliases) {
         let main: string[] = [];
-        if (Object.keys(aliases).includes(split[0])) {
+
+        if (split[0] in aliases) {
           main = aliases[split[0]];
         } else if (Object.values(aliases).flat().includes(split[0])) {
-          const mainstr = Object.keys(aliases).filter((k) =>
+          const mainstr = Object.keys(aliases).find((k) =>
             aliases[k].includes(split[0])
           );
-          if (mainstr.length > 1) {
-            throw new Error("Duplicate Aliases");
-          }
-          main = aliases[mainstr[0]];
-          parsed[mainstr[0]] = split[1];
+          if (!mainstr) throw new Error("Alias not found");
+          main = aliases[mainstr];
+          parsed[mainstr] = split[1];
         }
+
         for (let i = 0; i < main.length; i++) {
           parsed[main[i]] = split[1];
         }
@@ -63,7 +64,7 @@ export const larser = (
   }
 
   // TODO: optimize and refactor
-  if (defaults != null && aliases != null) {
+  if (defaults && aliases) {
     for (const [key, value] of Object.entries(defaults)) {
       if (parsed[key] === value) {
         for (let i = 0; i < aliases[key].length; i++) {
