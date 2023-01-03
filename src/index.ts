@@ -26,15 +26,16 @@ export const larser = (
 
     if (cIndex.startsWith("--")) {
       const split = cIndex.slice(2).split("=");
+      const spl1 = split[0];
 
       if (aliases) {
         let main: string[] = [];
 
-        if (split[0] in aliases) {
-          main = aliases[split[0]];
-        } else if (Object.values(aliases).flat().includes(split[0])) {
+        if (spl1 in aliases) {
+          main = aliases[spl1];
+        } else if (Object.values(aliases).flat().includes(spl1)) {
           const mainstr = Object.keys(aliases).find((k) =>
-            aliases[k].includes(split[0])
+            aliases[k].includes(spl1)
           );
           if (!mainstr) throw new Error("Alias not found");
           main = aliases[mainstr];
@@ -46,7 +47,7 @@ export const larser = (
         }
       }
 
-      parsed[split[0]] = split[1];
+      parsed[spl1] = split[1];
     } else if (cIndex.startsWith("-")) {
       parsed = {
         ...parsed,
