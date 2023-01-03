@@ -103,8 +103,6 @@ describe("Key Value Arguments", () => {
       thi: "default",
     };
 
-    console.log(parsed);
-
     it("should return as expected", () => {
       deepStrictEqual(parsed, expected);
     });
