@@ -8,15 +8,12 @@ delete object.devDependencies;
 
 await writeFile(
   "./dist/package.json",
-  Buffer.from(JSON.stringify(object), "utf-8"),
+  Buffer.from(JSON.stringify(object), "utf-8")
 );
 
 await writeFile(
   "./dist/index.d.ts",
-  await readFile("./src/types/index.d.ts", "utf-8"),
+  await readFile("./src/types/index.d.ts", "utf-8")
 );
 
-await copyFile(
-  "./README.md",
-  "./dist/README.md",
-);
+await copyFile("./README.md", "./dist/README.md");

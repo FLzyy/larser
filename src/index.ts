@@ -51,11 +51,26 @@ export const larser = (
         ...parsed,
         ...Object.assign(
           {},
-          ...cIndex.trim().slice(1).split("").map((k) => ({ [k]: true })),
+          ...cIndex
+            .trim()
+            .slice(1)
+            .split("")
+            .map((k) => ({ [k]: true })),
         ),
       };
     } else {
       parsed._.push(cIndex);
+    }
+  }
+
+  // TODO: optimize and refactor
+  if (defaults != null && aliases != null) {
+    for (const [key, value] of Object.entries(defaults)) {
+      if (parsed[key] === value) {
+        for (let i = 0; i < aliases[key].length; i++) {
+          parsed[aliases[key][i]] = value;
+        }
+      }
     }
   }
 
