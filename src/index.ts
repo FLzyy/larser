@@ -24,7 +24,7 @@ export const larser = (
     const cIndex = argv[i];
 
     if (cIndex.startsWith("--")) {
-      const split = cIndex.trim().slice(2).split("=");
+      const split = cIndex.slice(2).split("=");
 
       if (aliases != null) {
         let main: string[] = [];
@@ -52,7 +52,6 @@ export const larser = (
         ...Object.assign(
           {},
           ...cIndex
-            .trim()
             .slice(1)
             .split("")
             .map((k) => ({ [k]: true })),
