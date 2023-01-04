@@ -1,5 +1,5 @@
 import { describe, it } from "node:test";
-import { deepEqual, strictEqual } from "node:assert";
+import { deepEqual, equal } from "node:assert/strict";
 import { larser } from "../src/index.js";
 
 // First two are "mocks" of what process.argv would actually return.
@@ -32,7 +32,7 @@ describe("Key Value Arguments", () => {
   };
 
   it("should return empty root variable", () => {
-    strictEqual(parsed._.length, 0);
+    equal(parsed._.length, 0);
   });
 
   it("should return as expected", () => {
@@ -125,7 +125,7 @@ describe("Boolean Arguments", () => {
   };
 
   it("should return empty root variable", () => {
-    strictEqual(parsed._.length, 0);
+    equal(parsed._.length, 0);
   });
 
   it("should return as expected", () => {
