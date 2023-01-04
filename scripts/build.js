@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import { copyFile, readFile, writeFile } from "fs/promises";
 
 const source = await readFile("./package.json", "utf-8");

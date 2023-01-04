@@ -26,28 +26,7 @@ export const larser = (
 
     if (cIndex.startsWith("--")) {
       const split = cIndex.slice(2).split("=");
-      const spl1 = split[0];
-
-      if (aliases) {
-        let main: string[] = [];
-
-        if (spl1 in aliases) {
-          main = aliases[spl1];
-        } else if (Object.values(aliases).flat().includes(spl1)) {
-          const mainstr = Object.keys(aliases).find((k) =>
-            aliases[k].includes(spl1)
-          );
-          if (!mainstr) throw new Error("Alias not found");
-          main = aliases[mainstr];
-          parsed[mainstr] = split[1];
-        }
-
-        for (let i = 0; i < main.length; i++) {
-          parsed[main[i]] = split[1];
-        }
-      }
-
-      parsed[spl1] = split[1];
+      parsed[split[0]] = split[1];
     } else if (cIndex.startsWith("-")) {
       parsed = {
         ...parsed,
@@ -64,12 +43,23 @@ export const larser = (
     }
   }
 
-  // TODO: optimize and refactor
-  if (defaults && aliases) {
-    for (const [key, value] of Object.entries(defaults)) {
-      if (parsed[key] === value) {
-        for (let i = 0; i < aliases[key].length; i++) {
-          parsed[aliases[key][i]] = value;
+  if (aliases) {
+    for (const [key, value] of Object.entries(parsed)) {
+      if (key in aliases) {
+        parsed = {
+          ...parsed,
+          ...Object.assign({}, ...aliases[key].map((k) => ({ [k]: value }))),
+        };
+      } else if (Object.values(aliases).flat().includes(key)) {
+        const keyn = Object.keys(aliases).find((k) => aliases[k].includes(key));
+        if (keyn) {
+          parsed = {
+            ...parsed,
+            ...Object.assign(
+              { [keyn]: value },
+              ...aliases[keyn].map((k) => ({ [k]: value })),
+            ),
+          };
         }
       }
     }
