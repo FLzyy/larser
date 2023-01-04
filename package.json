@@ -8,7 +8,7 @@
   "scripts": {
     "compile": "npx swc src/index.ts -d dist --config-file .swcrc",
     "clean": "rmdir /Q /S dist",
-    "build": "npm run compile && npx swc scripts/build.ts -d scripts/dist --config-file .swcrc && node scripts/dist/build.js",
+    "build": "npm run compile && node scripts/build.js",
     "dev": "tsx src/dev.ts",
     "test": "npx tsx tests/index.test.ts",
     "pub": "npm run build && cd dist && npm publish",
