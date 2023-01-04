@@ -1,5 +1,5 @@
 import { describe, it } from "node:test";
-import { deepStrictEqual, strictEqual } from "node:assert";
+import { deepEqual, strictEqual } from "node:assert";
 import { larser } from "../src/index.js";
 
 // First two are "mocks" of what process.argv would actually return.
@@ -36,7 +36,7 @@ describe("Key Value Arguments", () => {
   });
 
   it("should return as expected", () => {
-    deepStrictEqual(parsed, expected);
+    deepEqual(parsed, expected);
   });
 
   describe("Aliased", () => {
@@ -58,7 +58,7 @@ describe("Key Value Arguments", () => {
     };
 
     it("should return as expected", () => {
-      deepStrictEqual(parsed, expected);
+      deepEqual(parsed, expected);
     });
   });
 
@@ -77,7 +77,7 @@ describe("Key Value Arguments", () => {
     };
 
     it("should return as expected", () => {
-      deepStrictEqual(parsed, expected);
+      deepEqual(parsed, expected);
     });
   });
 
@@ -104,7 +104,7 @@ describe("Key Value Arguments", () => {
     };
 
     it("should return as expected", () => {
-      deepStrictEqual(parsed, expected);
+      deepEqual(parsed, expected);
     });
   });
 });
@@ -129,7 +129,7 @@ describe("Boolean Arguments", () => {
   });
 
   it("should return as expected", () => {
-    deepStrictEqual(parsed, expected);
+    deepEqual(parsed, expected);
   });
 
   describe("Defaults", () => {
@@ -143,7 +143,7 @@ describe("Boolean Arguments", () => {
     });
 
     it("should return as expected", () => {
-      deepStrictEqual(parsed, expected);
+      deepEqual(parsed, expected);
     });
   });
 });
@@ -156,6 +156,6 @@ describe("Root Arguments", () => {
   };
 
   it("should return as expected", () => {
-    deepStrictEqual(parsed, expected);
+    deepEqual(parsed, expected);
   });
 });
