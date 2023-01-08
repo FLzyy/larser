@@ -1,23 +1,12 @@
 import { larser } from "./index.js";
 
-const parsed = larser([
-  "C:\\Program Files\\nodejs\\node.exe",
-  "C:\\larser\\tests\\index.test.js",
-  "--bi=bong",
-  "--th=that",
-  "-zyxa",
-  "-ghjk",
-  "AXY",
-  "YXA",
-], {
-  aliases: {
-    bing: ["bi", "bin"],
-    this: ["th", "thi"],
-  },
+const argv = process.argv;
+const parsed = larser(argv, {
   defaults: {
-    bing: "default",
-    this: "default",
+    t: true,
+    b: "defaulted",
   },
 });
 
+console.log(argv);
 console.log(parsed);

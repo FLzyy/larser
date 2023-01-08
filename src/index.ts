@@ -17,26 +17,31 @@ export const larser = (
 ): Parsed => {
   const { aliases, defaults } = options;
   let parsed: Parsed = {
-    _: [...argv.slice(2).filter((value) => !value.startsWith("-"))],
+    _: [],
     ...defaults,
-    ...Object.assign(
-      {},
-      ...argv.slice(2).map((value) => {
-        if (value.startsWith("--")) {
-          const split = value.slice(2).split("=");
-
-          return ({ [split[0]]: split[1] });
-        } else if (value.startsWith("-")) {
-          return value.slice(1).split("").reduce(
-            (ac, a) => ({ ...ac, [a]: true }),
-            {},
-          );
-        }
-
-        return undefined;
-      }),
-    ),
   };
+
+  for (let i = 2; i < argv.length; i++) {
+    const cIndex = argv[i];
+
+    if (cIndex.startsWith("--")) {
+      const split = cIndex.slice(2).split("=");
+      parsed[split[0]] = split[1];
+    } else if (cIndex.startsWith("-")) {
+      parsed = {
+        ...parsed,
+        ...Object.assign(
+          {},
+          ...cIndex
+            .slice(1)
+            .split("")
+            .map((k) => ({ [k]: true })),
+        ),
+      };
+    } else {
+      parsed._.push(cIndex);
+    }
+  }
 
   if (aliases) {
     for (const [key, value] of Object.entries(parsed)) {
