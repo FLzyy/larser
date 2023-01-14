@@ -26,7 +26,7 @@ export const larser = (
 
     if (cIndex.startsWith("--")) {
       const split = cIndex.slice(2).split("=");
-      parsed[split[0]] = split[1];
+      parsed[split[0]] = split[1] ?? true;
     } else if (cIndex.startsWith("-")) {
       parsed = {
         ...parsed,
