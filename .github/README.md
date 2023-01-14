@@ -13,6 +13,10 @@ The following is a basic example of using larser:
 ```js
 import { larser } from "larser";
 
+// Or for CJS
+
+const { larser } = require("larser");
+
 const argv = process.argv;
 const parsed = larser(argv);
 
@@ -95,22 +99,6 @@ console.log(parsed);
 
 Though we do recommend using ESM, you can also import this module using `import()` that is available in most
 CJS setups.
-
-```js
-(async () => {
-  const larser = await import("larser").larser;
-
-  // do something;
-})();
-
-// or
-
-import("larser").then((module) => {
-  const larser = module.larser;
-
-  // do something;
-});
-```
 
 And then you can use it just as normal.
 
