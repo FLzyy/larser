@@ -15,7 +15,11 @@ import { larser } from "larser";
 
 // Or for CJS
 
-const { larser } = require("larser");
+let larser;
+
+import("larser").then((module) => {
+  larser = module.larser;
+});
 
 const argv = process.argv;
 const parsed = larser(argv);
