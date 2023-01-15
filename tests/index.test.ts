@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import { deepEqual } from "node:assert/strict";
-import { larser } from "../src/index.js";
+import larser from "../src/index.js";
 
 // First two are "mocks" of what process.argv would actually return.
 

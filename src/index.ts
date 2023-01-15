@@ -8,7 +8,7 @@ interface Parsed {
   [key: string]: unknown;
 }
 
-export const larser = (
+export default (
   argv: string[],
   options: Options = {
     aliases: {},
