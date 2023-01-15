@@ -1,5 +1,5 @@
 import { describe, it } from "node:test";
-import { deepEqual, equal } from "node:assert/strict";
+import { deepEqual } from "node:assert/strict";
 import { larser } from "../src/index.js";
 
 // First two are "mocks" of what process.argv would actually return.
@@ -31,12 +31,22 @@ describe("Key Value Arguments", () => {
     this: "that",
   };
 
-  it("should return empty root variable", () => {
-    equal(parsed._.length, 0);
-  });
-
   it("should return as expected", () => {
     deepEqual(parsed, expected);
+  });
+
+  it("should make the value true if not passed", () => {
+    deepEqual(
+      larser([
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\larser\\tests\\index.test.js",
+        "--bing",
+      ]),
+      {
+        _: [],
+        bing: true,
+      },
+    );
   });
 
   describe("Aliased", () => {
@@ -123,10 +133,6 @@ describe("Boolean Arguments", () => {
     j: true,
     k: true,
   };
-
-  it("should return empty root variable", () => {
-    equal(parsed._.length, 0);
-  });
 
   it("should return as expected", () => {
     deepEqual(parsed, expected);
