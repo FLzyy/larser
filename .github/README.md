@@ -18,7 +18,7 @@ import { larser } from "larser";
 let larser;
 
 import("larser").then((module) => {
-  larser = module.larser;
+  larser = module;
 });
 
 const argv = process.argv;
