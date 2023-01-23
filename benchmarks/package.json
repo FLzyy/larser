@@ -9,7 +9,7 @@
     "benchmark": "^2.1.4"
   },
   "dependencies": {
-    "larser": "^1.0.17",
+    "larser": "^1.0.19",
     "minimist": "^1.2.7",
     "mri": "^1.2.0",
     "nopt": "^7.0.0",
