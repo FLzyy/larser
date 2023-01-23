@@ -59,7 +59,6 @@ bench
   .add("larser       ", () => larser(args))
   .add("larser (file)", () => file(args))
   .add("mri          ", () => mri(args))
-  // @ts-expect-error
   .add("nopt         ", () => nopt(args))
   .add("yargs-parser ", () => yargs(args))
   .on("cycle", (e) => console.log(String(e.target)))
