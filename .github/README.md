@@ -141,3 +141,14 @@ This should return once parsed:
 ```
 _: ["X", "YZ", "ZY"]
 ```
+
+## Benchmarks
+
+```
+Benchmark with 42 arguments:
+minimist      x 12,421 ops/sec ±1.25% (94 runs sampled)
+larser        x 19,708 ops/sec ±2.39% (85 runs sampled)
+mri           x 42,717 ops/sec ±0.81% (92 runs sampled)
+nopt          x 124,117 ops/sec ±0.40% (96 runs sampled)
+yargs-parser  x 1,186 ops/sec ±0.83% (92 runs sampled)
+```
