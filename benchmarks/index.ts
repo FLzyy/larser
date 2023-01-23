@@ -57,6 +57,7 @@ bench
   .add("minimist     ", () => minimist(args))
   .add("larser       ", () => larser(args))
   .add("mri          ", () => mri(args))
+  // @ts-expect-error
   .add("nopt         ", () => nopt(args))
   .add("yargs-parser ", () => yargs(args))
   .on("cycle", (e) => console.log(String(e.target)))
