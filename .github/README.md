@@ -146,10 +146,18 @@ _: ["X", "YZ", "ZY"]
 
 ```
 Benchmark with 42 arguments:
-minimist      x 9,846 ops/sec ±6.92% (72 runs sampled)
-larser        x 7,213 ops/sec ±2.72% (84 runs sampled)
-larser (file) x 7,112 ops/sec ±3.49% (79 runs sampled)
-mri           x 36,462 ops/sec ±3.61% (79 runs sampled)
-nopt          x 106,906 ops/sec ±2.87% (81 runs sampled)
-yargs-parser  x 921 ops/sec ±3.86% (76 runs sampled)
+minimist      x 11,671 ops/sec ±3.18% (85 runs sampled)
+larser        x 7,619 ops/sec ±2.77% (82 runs sampled)
+larser (file) x 6,772 ops/sec ±5.22% (75 runs sampled)
+mri           x 35,552 ops/sec ±4.06% (78 runs sampled)
+nopt          x 101,011 ops/sec ±4.33% (79 runs sampled)
+yargs-parser  x 1,131 ops/sec ±1.34% (88 runs sampled)
+
+Benchmark with 42 arguments (time):
+minimist: 0.266ms
+larser: 0.177ms
+larser (file): 0.133ms
+mri: 0.046ms
+nopt: 0.031ms
+yargs: 0.901ms
 ```
