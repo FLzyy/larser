@@ -4,7 +4,7 @@ import larser from "larser";
 import nopt from "nopt";
 import yargs from "yargs-parser";
 import minimist from "minimist";
-import file from "../src/index.js";
+import file from "../dist/index.js";
 
 console.clear();
 const args = [
