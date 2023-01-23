@@ -4,6 +4,7 @@ import larser from "larser";
 import nopt from "nopt";
 import yargs from "yargs-parser";
 import minimist from "minimist";
+import file from "../src/index.js";
 
 console.clear();
 const args = [
@@ -56,6 +57,7 @@ const bench = new benchmark.Suite();
 bench
   .add("minimist     ", () => minimist(args))
   .add("larser       ", () => larser(args))
+  .add("larser (file)", () => file(args))
   .add("mri          ", () => mri(args))
   // @ts-expect-error
   .add("nopt         ", () => nopt(args))
