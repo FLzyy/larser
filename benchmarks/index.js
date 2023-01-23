@@ -8,7 +8,7 @@ import yargs from "yargs-parser";
 import minimist from "minimist";
 import file from "../dist/index.js";
 
-console.clear();
+process.stdout.write("\x1bc");
 const args = [
   "C:\\Program Files\\nodejs\\node.exe",
   "C:\\larser\\tests\\index.test.js",

@@ -6,7 +6,8 @@
     "@types/minimist": "^1.2.2",
     "@types/nopt": "^3.0.29",
     "@types/yargs-parser": "^21.0.0",
-    "benchmark": "^2.1.4"
+    "benchmark": "^2.1.4",
+    "cross-spawn": "^7.0.3"
   },
   "dependencies": {
     "larser": "^1.0.20",

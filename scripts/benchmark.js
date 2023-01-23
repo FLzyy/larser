@@ -1,4 +1,11 @@
-# larser
+import { sync } from "cross-spawn";
+import { writeFileSync } from "fs";
+
+const { stdout } = sync("npm", ["run", "bench"]);
+
+writeFileSync(
+  "./.github/README.md",
+  `# larser
 
 [![npm version](https://img.shields.io/npm/v/larser)](https://www.npmjs.com/package/larser)
 [![npm downloads](https://img.shields.io/npm/dw/larser.svg)](https://www.npmjs.com/package/larser)
@@ -10,7 +17,7 @@ A Lightweight, 0 dependency package for parsing command line arguments that's [o
 
 The following is a basic example of using larser:
 
-```js
+\`\`\`js
 import { larser } from "larser";
 
 // Or for CJS
@@ -33,13 +40,13 @@ console.log(parsed);
  *
  * { _: [], testI: '1233', testII: '3112' }
  */
-```
+\`\`\`
 
 ## Aliases
 
 Using aliases is also supported by larser:
 
-```js
+\`\`\`js
 import { larser } from "larser";
 
 const argv = process.argv;
@@ -67,13 +74,13 @@ console.log(parsed);
  *  te2: '3112'
  * }
  */
-```
+\`\`\`
 
 ## Default
 
 You can also set defaults when the user does not provide a value:
 
-```js
+\`\`\`js
 import { larser } from "larser";
 
 const argv = process.argv;
@@ -97,11 +104,11 @@ console.log(parsed);
  *  b: "notdefault"
  * }
  */
-```
+\`\`\`
 
 ## CJS Usage
 
-Though we do recommend using ESM, you can also import this module using `import()` that is available in most
+Though we do recommend using ESM, you can also import this module using \`import()\` that is available in most
 CJS setups.
 
 And then you can use it just as normal.
@@ -111,45 +118,40 @@ And then you can use it just as normal.
 ### --X=Y
 
 Having a double dash will result in a key-value
-pair separated by `=`.
+pair separated by \`=\`.
 
 This should return, once parsed:
 
-```
+\`\`\`
 X: Y
-```
+\`\`\`
 
 ### -XYZ
 
-Having a single dash will result in a key-value pair with it's value being `true`.
+Having a single dash will result in a key-value pair with it's value being \`true\`.
 
 This should return, once parsed:
 
-```
+\`\`\`
 X: true,
 Y: true,
 Z: true
-```
+\`\`\`
 
 ### X YZ ZY
 
 Having no dashes will result in the string being
-pushed into the root variable `_`.
+pushed into the root variable \`_\`.
 
 This should return once parsed:
 
-```
+\`\`\`
 _: ["X", "YZ", "ZY"]
-```
+\`\`\`
 
 ## Benchmarks
 
-```
-Benchmark with 42 arguments:
-minimist      x 9,846 ops/sec ±6.92% (72 runs sampled)
-larser        x 7,213 ops/sec ±2.72% (84 runs sampled)
-larser (file) x 7,112 ops/sec ±3.49% (79 runs sampled)
-mri           x 36,462 ops/sec ±3.61% (79 runs sampled)
-nopt          x 106,906 ops/sec ±2.87% (81 runs sampled)
-yargs-parser  x 921 ops/sec ±3.86% (76 runs sampled)
-```
+\`\`\`
+${stdout}
+\`\`\``
+);
