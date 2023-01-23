@@ -64,5 +64,7 @@ bench
   // @ts-expect-error
   .add("nopt         ", () => nopt(args))
   .add("yargs-parser ", () => yargs(args))
-  .on("cycle", (e) => console.log(String(e.target)))
+  .on("cycle", (/** @type {{ target: benchmark.Target; }} */ e) =>
+    console.log(String(e.target))
+  )
   .run();
