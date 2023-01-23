@@ -161,3 +161,9 @@ mri: 0.046ms
 nopt: 0.031ms
 yargs: 0.901ms
 ```
+
+With the following hardware:
+
+- Processor: _AMD Ryzen 5 3400G with Radeon Vega Graphics_
+- Total Physical Memory: _14,246 MB_
+- Windows version: _Windows 11 Pro 22H2_
