@@ -13,33 +13,32 @@ export default (
   options: Options = {
     aliases: {},
     defaults: {},
-  },
+  }
 ): Parsed => {
   const { aliases, defaults } = options;
-  let parsed: Parsed = {
-    _: [],
-    ...defaults,
-  };
+  let parsed: Parsed = Object.assign({ _: [] }, defaults);
 
-  for (let i = 2; i < argv.length; i++) {
+  for (let i = 2, n = argv.length; i < n; i++) {
     const cIndex = argv[i];
 
-    if (cIndex.startsWith("--")) {
-      const split = cIndex.slice(2).split("=");
-      parsed[split[0]] = split[1] ?? true;
-    } else if (cIndex.startsWith("-")) {
-      parsed = {
-        ...parsed,
-        ...Object.assign(
+    switch (true) {
+      case cIndex.startsWith("--"):
+        // eslint-disable-next-line no-case-declarations
+        const split = cIndex.slice(2).split("=");
+        parsed[split[0]] = split[1] ?? true;
+        break;
+      case cIndex.startsWith("-"):
+        parsed = Object.assign(
           {},
+          parsed,
           ...cIndex
             .slice(1)
             .split("")
-            .map((k) => ({ [k]: true })),
-        ),
-      };
-    } else {
-      parsed._.push(cIndex);
+            .map((k) => ({ [k]: true }))
+        );
+        break;
+      default:
+        parsed._.push(cIndex);
     }
   }
 
@@ -57,7 +56,7 @@ export default (
             ...parsed,
             ...Object.assign(
               { [keyn]: value },
-              ...aliases[keyn].map((k) => ({ [k]: value })),
+              ...aliases[keyn].map((k) => ({ [k]: value }))
             ),
           };
         }
