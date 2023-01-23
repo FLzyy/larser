@@ -22,16 +22,13 @@ export default (
     const cIndex = argv[i];
 
     if (cIndex.startsWith("--")) {
-      const split = cIndex.slice(2).split("=");
+      const split = cIndex.replace("--", "").split("=");
       parsed[split[0]] = split[1] ?? true;
     } else if (cIndex.startsWith("-")) {
       parsed = Object.assign(
         {},
         parsed,
-        ...cIndex
-          .slice(1)
-          .split("")
-          .map((k) => ({ [k]: true }))
+        ...[...cIndex.replace("-", "")].map((k) => ({ [k]: true }))
       );
     } else {
       parsed._.push(cIndex);
@@ -41,20 +38,19 @@ export default (
   if (aliases) {
     for (const [key, value] of Object.entries(parsed)) {
       if (key in aliases) {
-        parsed = {
-          ...parsed,
-          ...Object.assign({}, ...aliases[key].map((k) => ({ [k]: value }))),
-        };
+        parsed = Object.assign(
+          {},
+          parsed,
+          ...aliases[key].map((k) => ({ [k]: value }))
+        );
       } else if (Object.values(aliases).flat().includes(key)) {
         const keyn = Object.keys(aliases).find((k) => aliases[k].includes(key));
         if (keyn) {
-          parsed = {
-            ...parsed,
-            ...Object.assign(
-              { [keyn]: value },
-              ...aliases[keyn].map((k) => ({ [k]: value }))
-            ),
-          };
+          parsed = Object.assign(
+            { [keyn]: value },
+            parsed,
+            ...aliases[keyn].map((k) => ({ [k]: value }))
+          );
         }
       }
     }
