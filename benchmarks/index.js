@@ -68,3 +68,30 @@ bench
     console.log(String(e.target))
   )
   .run();
+
+console.log(`\nBenchmark with ${args.length} arguments (time):`);
+
+console.time("minimist");
+minimist(args);
+console.timeEnd("minimist");
+
+console.time("larser");
+larser(args);
+console.timeEnd("larser");
+
+console.time("larser (file)");
+file(args);
+console.timeEnd("larser (file)");
+
+console.time("mri");
+mri(args);
+console.timeEnd("mri");
+
+console.time("nopt");
+// @ts-expect-error
+nopt(args);
+console.timeEnd("nopt");
+
+console.time("yargs");
+yargs(args);
+console.timeEnd("yargs");
