@@ -20,16 +20,14 @@ export default (
 
   let i = 2;
   const n = argv.length;
-  const aliasLookup = {};
   while (i < n) {
     const cIndex = argv[i];
     if (cIndex.startsWith("--")) {
-      const split = cIndex.replace("--", "").split("=");
-      parsed[split[0]] = split[1] ?? true;
+      const split = cIndex.split("=");
+      parsed[split[0].replace("--", "")] = split[1] ?? true;
     } else if (cIndex.startsWith("-")) {
       [...cIndex.replace("-", "")].forEach((k) => {
         parsed[k] = true;
-        aliasLookup[k] = k;
       });
     } else {
       parsed._.push(cIndex);
