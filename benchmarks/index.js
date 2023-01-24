@@ -57,7 +57,7 @@ const bench = new benchmark.Suite();
 
 bench
   .add("minimist     ", () => minimist(args))
-  .add("larser", () => file(args))
+  .add("larser       ", () => file(args))
   .add("mri          ", () => mri(args))
   // @ts-expect-error
   .add("nopt         ", () => nopt(args))
