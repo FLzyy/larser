@@ -18,21 +18,23 @@ export default (
   const { aliases, defaults } = options;
   let parsed: Parsed = { _: [], ...defaults };
 
-  for (let i = 2, n = argv.length; i < n; i++) {
+  let i = 2;
+  const n = argv.length;
+  const aliasLookup = {};
+  while (i < n) {
     const cIndex = argv[i];
-
     if (cIndex.startsWith("--")) {
       const split = cIndex.replace("--", "").split("=");
       parsed[split[0]] = split[1] ?? true;
     } else if (cIndex.startsWith("-")) {
-      parsed = Object.assign(
-        {},
-        parsed,
-        ...[...cIndex.replace("-", "")].map((k) => ({ [k]: true }))
-      );
+      [...cIndex.replace("-", "")].forEach((k) => {
+        parsed[k] = true;
+        aliasLookup[k] = k;
+      });
     } else {
       parsed._.push(cIndex);
     }
+    i++;
   }
 
   if (aliases) {
