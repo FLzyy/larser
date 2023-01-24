@@ -26,7 +26,7 @@ export default (
       const split = cIndex.split("=");
       parsed[split[0].substring(2)] = split[1] ?? true;
     } else if (cIndex.startsWith("-")) {
-      const chars = [...cIndex.substring(2)];
+      const chars = [...cIndex.substring(1)];
 
       for (let i = 0, n = chars.length; i < n; i++) {
         parsed[chars[i]] = true;
