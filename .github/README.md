@@ -11,7 +11,7 @@ A Lightweight, 0 dependency package for parsing command line arguments that's [o
 The following is a basic example of using larser:
 
 ```js
-import { larser } from "larser";
+import larser from "larser";
 
 // Or for CJS
 
@@ -40,7 +40,7 @@ console.log(parsed);
 Using aliases is also supported by larser:
 
 ```js
-import { larser } from "larser";
+import larser from "larser";
 
 const argv = process.argv;
 const parsed = larser(argv, {
@@ -74,7 +74,7 @@ console.log(parsed);
 You can also set defaults when the user does not provide a value:
 
 ```js
-import { larser } from "larser";
+import larser from "larser";
 
 const argv = process.argv;
 const parsed = larser(argv, {
@@ -161,3 +161,9 @@ mri: 0.046ms
 nopt: 0.031ms
 yargs: 0.901ms
 ```
+
+With the following hardware:
+
+- Processor: _AMD Ryzen 5 3400G with Radeon Vega Graphics_
+- Total Physical Memory: _14,246 MB_
+- Windows version: _Windows 11 Pro 22H2_
