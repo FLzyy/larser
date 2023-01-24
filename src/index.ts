@@ -24,15 +24,17 @@ export default (
     const cIndex = argv[i];
     if (cIndex.startsWith("--")) {
       const split = cIndex.split("=");
-      parsed[split[0].replace("--", "")] = split[1] ?? true;
+      parsed[split[0].substring(2)] = split[1] ?? true;
     } else if (cIndex.startsWith("-")) {
-      [...cIndex.replace("-", "")].forEach((k) => {
-        parsed[k] = true;
-      });
+      const chars = [...cIndex.substring(2)];
+
+      for (let i = 0, n = chars.length; i < n; i++) {
+        parsed[chars[i]] = true;
+      }
     } else {
       parsed._.push(cIndex);
     }
-    i++;
+    ++i;
   }
 
   if (aliases) {
