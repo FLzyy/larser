@@ -2,7 +2,6 @@
 
 import benchmark from "benchmark";
 import mri from "mri";
-import larser from "larser";
 import nopt from "nopt";
 import yargs from "yargs-parser";
 import minimist from "minimist";
@@ -58,8 +57,7 @@ const bench = new benchmark.Suite();
 
 bench
   .add("minimist     ", () => minimist(args))
-  .add("larser       ", () => larser(args))
-  .add("larser (file)", () => file(args))
+  .add("larser       ", () => file(args))
   .add("mri          ", () => mri(args))
   // @ts-expect-error
   .add("nopt         ", () => nopt(args))
@@ -76,12 +74,8 @@ minimist(args);
 console.timeEnd("minimist");
 
 console.time("larser");
-larser(args);
-console.timeEnd("larser");
-
-console.time("larser (file)");
 file(args);
-console.timeEnd("larser (file)");
+console.timeEnd("larser");
 
 console.time("mri");
 mri(args);
