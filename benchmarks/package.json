@@ -10,7 +10,6 @@
     "cross-spawn": "^7.0.3"
   },
   "dependencies": {
-    "larser": "^1.0.20",
     "minimist": "^1.2.7",
     "mri": "^1.2.0",
     "nopt": "^7.0.0",
