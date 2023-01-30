@@ -145,19 +145,19 @@ _: ["X", "YZ", "ZY"]
 ## Benchmarks
 
 ```
-Benchmark with 42 arguments:
-minimist      x 11,021 ops/sec ±2.48% (87 runs sampled)
-larser        x 31,685 ops/sec ±3.11% (82 runs sampled)
-mri           x 40,562 ops/sec ±2.03% (88 runs sampled)
-nopt          x 108,377 ops/sec ±2.78% (85 runs sampled)
-yargs-parser  x 1,086 ops/sec ±1.38% (88 runs sampled)
+Benchmark with 40 arguments:
+minimist      x 11,799 ops/sec ±1.35% (88 runs sampled)
+larser        x 37,481 ops/sec ±1.67% (87 runs sampled)
+mri           x 46,089 ops/sec ±0.80% (93 runs sampled)
+nopt          x 113,870 ops/sec ±1.94% (89 runs sampled)
+yargs-parser  x 1,092 ops/sec ±6.00% (76 runs sampled)
 
 Benchmark with 42 arguments (time):
-minimist: 0.288ms
-larser: 0.09ms
-mri: 0.048ms
+minimist: 0.344ms
+larser: 0.08ms
+mri: 0.046ms
 nopt: 0.032ms
-yargs: 0.933ms
+yargs: 0.779ms
 ```
 
 With the following hardware:
