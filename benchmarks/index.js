@@ -52,16 +52,16 @@ const args = [
   "JBASJDabshdwqw",
   "--asdhvqwhbkasd=bjsdhvbqkwefvas",
 ];
-console.log(`Benchmark with ${args.length} arguments:`);
+console.log(`Benchmark with ${args.length - 2} arguments:`);
 const bench = new benchmark.Suite();
 
 bench
-  .add("minimist     ", () => minimist(args))
+  .add("minimist     ", () => minimist(args.slice(2)))
   .add("larser       ", () => file(args))
-  .add("mri          ", () => mri(args))
+  .add("mri          ", () => mri(args.slice(2)))
   // @ts-expect-error
   .add("nopt         ", () => nopt(args))
-  .add("yargs-parser ", () => yargs(args))
+  .add("yargs-parser ", () => yargs(args.slice(2)))
   .on("cycle", (/** @type {{ target: benchmark.Target; }} */ e) =>
     console.log(String(e.target))
   )
