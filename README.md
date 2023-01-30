@@ -1,6 +1,6 @@
 # larser
 
-Lightweight command line argument parser.
+A Minimal and lightweight command line argument parser.
 
 ```js
 import larser from "larser";
